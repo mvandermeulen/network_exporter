@@ -1,5 +1,5 @@
 conf:
-  refresh: 30m
+  refresh: 10m
   #nameserver: 192.168.1.1:53
 
 icmp:
@@ -22,9 +22,24 @@ http_get:
   timeout: 5s
 
 targets:
-  - name: internal
-    host: 192.168.1.1
+  - name: ntp1
+    host: 10.60.68.151
     type: ICMP
+  - name: ntp2
+    host: 10.60.68.152
+    type: ICMP
+  - name: ntp3
+    host: 10.68.68.151
+    type: ICMP
+  - name: ntp4
+    host: 10.68.68.152
+    type: ICMP
+  - name: azure-ad-server-1
+    host: 10.50.17.5
+    type: ICMP+MTR
+  - name: azure-ad-server-2
+    host: 10.50.17.6
+    type: ICMP+MTR
   - name: google-dns1
     host: 8.8.8.8
     type: ICMP
@@ -34,6 +49,3 @@ targets:
   - name: cloudflare-dns-https
     host: 1.1.1.1:443
     type: TCP
-  - name: download-file-64M
-    host: http://test-debit.free.fr/65536.rnd
-    type: HTTPGet
